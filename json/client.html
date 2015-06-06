@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>e
+    <title>初始化网站信息</title>
+</head>
+<body>
+    <script type="text/javascript">
+        $("document").ready(function(){
+            var url = "server.php?inAjax=1&do=checkMember&username=lxy";
+            var data = {};
+            $.get(url,data,function(res,status){
+                alert("数据" + res + "\n状态" + status);
+                var jsonObj = eval("("+ res +")");
+                $("#username").val(jsonObj.username);
+                $("#groupname").val(jsonObj.groupname);
+                $("#uid").val(jsonObj.uid);
+            });
+        });
+    </script>
+
+        用户名：<input type="text" name="username" id="username"/></br>
+        会员组：<input type="text" name="groupname" id="groupname"/></br>
+        UID:<input type="text" name="uid" id="uid" qid="uid"/>
+     </div>
+</body>
+</html>
